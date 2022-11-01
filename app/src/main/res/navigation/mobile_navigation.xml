@@ -7,9 +7,13 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.movieappassessment.presentation.home.activity.ui.home.HomeFragment"
+        android:name="com.example.movieappassessment.presentation.home.activity.ui.home.fragment.HomeFragment"
         android:label="@string/menu_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_nav_home_to_viewAllFragment"
+            app:destination="@id/nav_viewall" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_saved"
@@ -28,4 +32,13 @@
         android:name="com.example.movieappassessment.presentation.home.activity.ui.profile.ProfileFragment"
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/nav_viewall"
+        android:name="com.example.movieappassessment.presentation.home.activity.ui.viewall.fragment.upcoming.ViewAllUpcomingFragment"
+        android:label="fragment_view_all"
+        tools:layout="@layout/fragment_view_all_upcoming" >
+        <action
+            android:id="@+id/action_viewAllFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 </navigation>
