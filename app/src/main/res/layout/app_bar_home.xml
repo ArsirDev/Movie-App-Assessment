@@ -4,7 +4,7 @@
     android:id="@+id/coordinator_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.home.activity.HomeActivity">
+    tools:context=".presentation.home.HomeActivity">
     <include
         android:id="@+id/content_home"
         layout="@layout/content_home" />

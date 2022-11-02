@@ -30,7 +30,7 @@
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout-w600dp/fragment_transform.xml" value="0.30166374781085814" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout-w600dp/item_transform.xml" value="0.30166374781085814" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout-w936dp/content_scrolling.xml" value="0.11475409836065574" />
-        <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/activity_detail.xml" value="0.4" />
+        <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/activity_detail.xml" value="0.1" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/activity_home.xml" value="0.17300724637681159" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/activity_slider.xml" value="0.264" />
@@ -38,7 +38,7 @@
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/activity_welcome.xml" value="0.176" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/app_bar_home.xml" value="0.1983695652173913" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/content_home.xml" value="0.2907608695652174" />
-        <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/content_scrolling.xml" value="0.264" />
+        <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/content_scrolling.xml" value="0.583413693346191" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/fragment_explore.xml" value="0.27898550724637683" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/fragment_favorite.xml" value="0.27898550724637683" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/fragment_genre.xml" value="0.1" />
@@ -49,6 +49,7 @@
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/fragment_view_all.xml" value="0.2817028985507246" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/fragment_view_all_popular.xml" value="0.2817028985507246" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/fragment_view_all_upcoming.xml" value="0.2817028985507246" />
+        <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/item_chip.xml" value="0.4" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/item_movie.xml" value="0.2817028985507246" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/item_movie_upcoming.xml" value="0.4" />
         <entry key="..\:/Users/MSI Gaming/AndroidStudioProjects/MovieAppAssessment/app/src/main/res/layout/item_transform.xml" value="0.2907608695652174" />

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/nav_home"
-        android:name="com.example.movieappassessment.presentation.home.activity.ui.home.fragment.HomeFragment"
+        android:name="com.example.movieappassessment.presentation.home.ui.home.fragment.HomeFragment"
         android:label="@string/menu_home"
         tools:layout="@layout/fragment_home" >
         <action
@@ -20,24 +20,24 @@
 
     <fragment
         android:id="@+id/nav_saved"
-        android:name="com.example.movieappassessment.presentation.home.activity.ui.saved.SavedFragment"
+        android:name="com.example.movieappassessment.presentation.home.ui.saved.SavedFragment"
         android:label="@string/menu_saved"
         tools:layout="@layout/fragment_saved" />
 
     <fragment
         android:id="@+id/nav_explore"
-        android:name="com.example.movieappassessment.presentation.home.activity.ui.explore.ExploreFragment"
+        android:name="com.example.movieappassessment.presentation.home.ui.explore.ExploreFragment"
         android:label="@string/menu_explore"
         tools:layout="@layout/fragment_explore" />
 
     <fragment
         android:id="@+id/nav_profile"
-        android:name="com.example.movieappassessment.presentation.home.activity.ui.profile.ProfileFragment"
+        android:name="com.example.movieappassessment.presentation.home.ui.profile.ProfileFragment"
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
         android:id="@+id/nav_view_all_upcoming"
-        android:name="com.example.movieappassessment.presentation.home.activity.ui.viewall.fragment.upcoming.ViewAllUpcomingFragment"
+        android:name="com.example.movieappassessment.presentation.home.ui.viewall.fragment.upcoming.ViewAllUpcomingFragment"
         android:label="nav_view_upcoming"
         tools:layout="@layout/fragment_view_all_upcoming" >
         <action
@@ -46,7 +46,7 @@
     </fragment>
     <fragment
         android:id="@+id/nav_view_all_popular"
-        android:name="com.example.movieappassessment.presentation.home.activity.ui.viewall.fragment.pupular.ViewAllPopularFragment"
+        android:name="com.example.movieappassessment.presentation.home.ui.viewall.fragment.pupular.ViewAllPopularFragment"
         android:label="nav_view_all_popular"
         tools:layout="@layout/fragment_view_all_popular" >
         <action

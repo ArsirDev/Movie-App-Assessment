@@ -9,7 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.viewpager.widget.ViewPager
 import com.example.movieappassessment.databinding.ActivitySliderBinding
 import com.example.movieappassessment.domain.adapter.slider.SliderAdapter
-import com.example.movieappassessment.presentation.home.activity.HomeActivity
+import com.example.movieappassessment.presentation.home.HomeActivity
 import com.example.movieappassessment.presentation.sliderscreen.viewmodel.SliderViewModel
 import com.example.movieappassessment.utils.removeView
 import com.example.movieappassessment.utils.showView

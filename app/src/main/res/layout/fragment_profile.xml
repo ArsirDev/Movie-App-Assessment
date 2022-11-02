@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/dark"
-    tools:context=".presentation.home.activity.ui.profile.ProfileFragment">
+    tools:context=".presentation.home.ui.profile.ProfileFragment">
 
     <TextView
         android:id="@+id/text_settings"

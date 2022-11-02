@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieappassessment.databinding.ItemMovieBinding
 import com.example.movieappassessment.domain.model.Popular
+import com.example.movieappassessment.utils.setOnClickListenerWithDebounce
 
 class PopularAdapter : RecyclerView.Adapter<PopularViewHolder>() {
 
@@ -33,11 +34,25 @@ class PopularAdapter : RecyclerView.Adapter<PopularViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: PopularViewHolder, position: Int) {
-        holder.bind(differ.currentList[position])
+        holder.apply {
+            bind(differ.currentList[position].also { item ->
+                itemView.setOnClickListenerWithDebounce {
+                    onItemClickListener?.let { id ->
+                        id(item.id)
+                    }
+                }
+            })
+        }
     }
 
     override fun getItemCount(): Int {
         return differ.currentList.size
+    }
+
+    private var onItemClickListener: ((Int) -> Unit)? = null
+
+    fun setOnItemClickListener(listener: (Int) -> Unit) {
+        onItemClickListener = listener
     }
 
     companion object {

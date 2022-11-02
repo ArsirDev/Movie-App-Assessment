@@ -2,7 +2,6 @@ package com.example.movieappassessment.presentation.detail.activity
 
 import android.annotation.SuppressLint
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Lifecycle
@@ -14,17 +13,19 @@ import com.example.movieappassessment.data.remote.dto.VideoResultsItem
 import com.example.movieappassessment.databinding.ActivityDetailBinding
 import com.example.movieappassessment.presentation.detail.viewmodel.DetailViewModel
 import com.example.movieappassessment.utils.Extended.ID
+import com.example.movieappassessment.utils.date
 import com.example.movieappassessment.utils.loadImage
 import com.example.movieappassessment.utils.removeView
 import com.example.movieappassessment.utils.setOnClickListenerWithDebounce
 import com.example.movieappassessment.utils.showView
 import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.chip.Chip
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
-import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.utils.YouTubePlayerTracker
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
+
 
 @AndroidEntryPoint
 class DetailActivity : AppCompatActivity() {
@@ -34,8 +35,6 @@ class DetailActivity : AppCompatActivity() {
     private val binding get() = _binding as ActivityDetailBinding
 
     private val viewModel: DetailViewModel by viewModels()
-
-    var tracker = YouTubePlayerTracker()
 
     @SuppressLint("ResourceAsColor")
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -49,11 +48,11 @@ class DetailActivity : AppCompatActivity() {
 
     private fun initLaunch() {
         lifecycleScope.launchWhenStarted {
-            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED){
+            lifecycle.repeatOnLifecycle(Lifecycle.State.STARTED) {
                 launch {
                     viewModel.state.collectLatest { state ->
                         with(binding.lyContent) {
-                            if (state.isLoading){
+                            if (state.isLoading) {
                                 pbLoading?.showView()
                             } else {
                                 pbLoading?.removeView()
@@ -68,6 +67,28 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun initView(detailResponse: DetailResponse?) {
+        with(binding.lyContent) {
+            tvTitle?.text = detailResponse?.title
+            tvRelease?.text = detailResponse?.releaseDate?.date()
+            tvVote?.text = detailResponse?.voteAverage.toString()
+            tvDescription?.text = detailResponse?.overview
+            detailResponse?.genres?.forEach {
+               addChip(it.name)
+            }
+        }
+    }
+
+    private fun addChip(genre: String) {
+        val chip = layoutInflater.inflate(R.layout.item_chip, binding.lyContent.cGroup, false) as Chip
+        chip.text = genre
+        binding.lyContent.cGroup?.addView(chip)
+    }
+
+
+    private fun initYoutube(
+        youtubeResponse: List<VideoResultsItem>?,
+        detailResponse: DetailResponse?
+    ) {
         with(binding) {
             ivImage.apply {
                 loadImage(detailResponse?.backdropPath.toString())
@@ -78,27 +99,18 @@ class DetailActivity : AppCompatActivity() {
             }
             binding.toolbarLayout.title = detailResponse?.title
         }
-        with(binding.lyContent) {
-            tvTitle?.text = detailResponse?.title
-        }
-    }
-
-    private fun initYoutube(youtubeResponse: List<VideoResultsItem>?, detailResponse: DetailResponse?) {
 
         binding.ytVideo.apply {
             lifecycle.addObserver(this)
-            addYouTubePlayerListener(tracker)
-            isFullScreen()
             addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
                 override fun onReady(youTubePlayer: YouTubePlayer) {
                     super.onReady(youTubePlayer)
                     youtubeResponse?.map { data ->
-                        youTubePlayer.loadVideo(data.key, 0f)
+                        youTubePlayer.cueVideo(data.key, 0f)
                         onCollaption(youTubePlayer, detailResponse)
                     }
                 }
             })
-
         }
     }
 
@@ -106,15 +118,15 @@ class DetailActivity : AppCompatActivity() {
         var isShow = true
         var scrollRange = -1
         binding.appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { barLayout, verticalOffset ->
-            if (scrollRange == -1){
+            if (scrollRange == -1) {
                 scrollRange = barLayout?.totalScrollRange!!
             }
-            if (scrollRange + verticalOffset == 0){
-                youTubePlayer.pause()
+            if (scrollRange + verticalOffset == 0) {
                 binding.toolbarLayout.title = detailResponse?.title
                 isShow = true
-            } else if (isShow){
-                youTubePlayer.play()
+            } else if (isShow) {
+                youTubePlayer.pause()
+                binding.ytVideo.removeView()
                 binding.toolbarLayout.title = " "
                 isShow = false
             }
@@ -139,6 +151,5 @@ class DetailActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-        binding.ytVideo.release()
     }
 }

@@ -17,7 +17,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.example.movieappassessment.R
 import com.example.movieappassessment.databinding.ActivitySplashBinding
-import com.example.movieappassessment.presentation.home.activity.HomeActivity
+import com.example.movieappassessment.presentation.home.HomeActivity
 import com.example.movieappassessment.presentation.splashscreen.viewmodel.SplashViewModel
 import com.example.movieappassessment.presentation.welcome.activity.WelcomeActivity
 import dagger.hilt.android.AndroidEntryPoint

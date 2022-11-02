@@ -21,9 +21,91 @@
            android:fontFamily="@font/source_sans_pro_bold"
            android:text="@string/title_activity_detail"
            android:textColor="@color/white"
-           android:textSize="24sp"
+           android:textSize="17sp"
+           android:shadowColor="@color/white"
+           android:shadowRadius="9"
            app:layout_constraintStart_toStartOf="parent"
            app:layout_constraintTop_toTopOf="parent" />
+
+       <ImageView
+           android:id="@+id/iv_calendar"
+           android:layout_width="8dp"
+           android:layout_height="8dp"
+           android:layout_marginTop="8dp"
+           app:layout_constraintStart_toStartOf="@+id/tv_title"
+           app:layout_constraintTop_toBottomOf="@+id/tv_title"
+           app:srcCompat="@drawable/ic_calendar"
+           app:tint="@color/white" />
+
+       <TextView
+           android:id="@+id/tv_release"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="4dp"
+           android:fontFamily="@font/source_sans_pro_bold"
+           android:alpha="0.8"
+           android:text="Release"
+           android:textColor="@color/white"
+           android:textSize="12sp"
+           app:layout_constraintBottom_toBottomOf="@+id/iv_calendar"
+           app:layout_constraintStart_toEndOf="@+id/iv_calendar"
+           app:layout_constraintTop_toTopOf="@+id/iv_calendar" />
+
+       <ImageView
+           android:id="@+id/iv_star"
+           android:layout_width="8dp"
+           android:layout_height="8dp"
+           android:layout_marginStart="8dp"
+           app:tint="@color/white"
+           app:layout_constraintBottom_toBottomOf="@+id/tv_release"
+           app:layout_constraintStart_toEndOf="@+id/tv_release"
+           app:layout_constraintTop_toTopOf="@+id/tv_release"
+           app:srcCompat="@drawable/ic_star" />
+
+       <TextView
+           android:id="@+id/tv_vote"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:alpha="0.8"
+           android:layout_marginStart="8dp"
+           android:fontFamily="@font/source_sans_pro_bold"
+           android:text="Vote"
+           android:textColor="@color/white"
+           android:textSize="12sp"
+           app:layout_constraintBottom_toBottomOf="@+id/iv_star"
+           app:layout_constraintStart_toEndOf="@+id/iv_star"
+           app:layout_constraintTop_toTopOf="@+id/iv_star" />
+
+       <com.google.android.material.chip.ChipGroup
+           android:id="@+id/c_group"
+           android:layout_width="0dp"
+           android:layout_marginTop="4dp"
+           android:layout_marginEnd="16dp"
+           android:theme="@style/Theme.MaterialComponents"
+           app:singleSelection="true"
+           android:layout_height="wrap_content"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="@+id/iv_calendar"
+           app:layout_constraintTop_toBottomOf="@+id/tv_vote">
+
+       </com.google.android.material.chip.ChipGroup>
+
+       <TextView
+           android:id="@+id/tv_description"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="24dp"
+           android:layout_marginStart="16dp"
+           android:layout_marginEnd="16dp"
+           android:justificationMode="inter_word"
+           android:textColor="@color/white"
+           android:alpha="0.5"
+           android:fontFamily="@font/alata"
+           android:text=""
+           android:lineSpacingExtra="1dp"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/c_group" />
 
        <ProgressBar
            android:id="@+id/pb_loading"
