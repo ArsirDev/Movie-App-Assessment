@@ -26,7 +26,7 @@
 
     <fragment
         android:id="@+id/nav_explore"
-        android:name="com.example.movieappassessment.presentation.home.ui.explore.ExploreFragment"
+        android:name="com.example.movieappassessment.presentation.home.ui.explore.fragment.ExploreFragment"
         android:label="@string/menu_explore"
         tools:layout="@layout/fragment_explore" />
 

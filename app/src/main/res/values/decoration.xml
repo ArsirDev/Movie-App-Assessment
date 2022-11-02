@@ -9,4 +9,15 @@
     <style name="circle_rounded">
         <item name="cornerSize">50%</item>
     </style>
+    <style name="CustomEditText">
+        <item name="android:background">@drawable/custom_edittext</item>
+        <item name="android:fontFamily">@font/source_sans_pro</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:paddingStart">30dp</item>
+        <item name="android:paddingTop">15dp</item>
+        <item name="android:paddingEnd">30dp</item>
+        <item name="android:paddingBottom">15dp</item>
+        <item name="android:textColor">@drawable/custom_textcolor</item>
+        <item name="android:textColorHint">@color/dark</item>
+    </style>
 </resources>

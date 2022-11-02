@@ -1,8 +1,11 @@
 package com.example.movieappassessment.domain.repository.main
 
 import com.example.movieappassessment.data.remote.dto.DetailResponse
+import com.example.movieappassessment.data.remote.dto.DiscoverMovieResponse
+import com.example.movieappassessment.data.remote.dto.GenreResponse
 import com.example.movieappassessment.data.remote.dto.Genres
 import com.example.movieappassessment.data.remote.dto.PopularResponse
+import com.example.movieappassessment.data.remote.dto.SearchMovieResponse
 import com.example.movieappassessment.data.remote.dto.UpcomingResponse
 import com.example.movieappassessment.data.remote.dto.VideoResponse
 import com.example.movieappassessment.domain.model.Popular
@@ -29,7 +32,7 @@ interface MainMovieRepository {
         language: String
     ): Flow<Result<PopularResponse>>
 
-    fun getGenre(): Flow<Result<List<Genres>>>
+    fun getGenre(): Flow<Result<GenreResponse>>
 
     fun getPopularMovie(
         page: Int,
@@ -43,4 +46,17 @@ interface MainMovieRepository {
     fun getVideoMovie(
         movie_id: Int
     ): Flow<Result<VideoResponse>>
+
+    fun getSearchMovie(
+        query: String,
+        page: Int,
+        language: String
+    ): Flow<Result<SearchMovieResponse>>
+
+    fun getDiscoverMovie(
+        with_genres: String,
+        page: Int,
+        include_adult: Boolean,
+        language: String
+    ): Flow<Result<DiscoverMovieResponse>>
 }

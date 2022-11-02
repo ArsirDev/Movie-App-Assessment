@@ -11,13 +11,17 @@ object MovieEndPoint {
     const val GENRE_MOVIE = "genre/movie/list"
     const val DETAIL_MOVIE = "movie/{movie_id}"
     const val VIDEO_MOVIE = "movie/{movie_id}/videos"
+    const val SEARCH_MOVIE = "search/movie"
+    const val DISCOVER_MOVIE = "discover/movie"
 }
 
 object MovieKeyConstant {
     const val API_KEY_PARAM = "api_key"
     const val KEY_PAGE = "page"
     const val KEY_LANGUAGE = "language"
+    const val INCLUDE_ADULT = "include_adult"
     const val KEY_QUERY = "query"
+    const val KEY_WITH_GENRE = "with_genres"
 }
 
 object DataBASE {

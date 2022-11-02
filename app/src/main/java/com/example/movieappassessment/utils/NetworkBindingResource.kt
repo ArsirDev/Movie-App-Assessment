@@ -15,7 +15,7 @@ inline fun <ResultType, RequestType> networkBindingResource(
     val data = query().first()
 
     val flow = if (shouldFetch(data)) {
-        emit(Result.Loading(data))
+        emit(Result.Loading())
 
         try {
             saveFetchResult(fetch())

@@ -76,19 +76,31 @@
            app:layout_constraintStart_toEndOf="@+id/iv_star"
            app:layout_constraintTop_toTopOf="@+id/iv_star" />
 
-       <com.google.android.material.chip.ChipGroup
-           android:id="@+id/c_group"
-           android:layout_width="0dp"
-           android:layout_marginTop="4dp"
-           android:layout_marginEnd="16dp"
-           android:theme="@style/Theme.MaterialComponents"
-           app:singleSelection="true"
+       <HorizontalScrollView
+           android:id="@+id/ly_chip"
+           android:layout_width="match_parent"
            android:layout_height="wrap_content"
+           android:scrollbars="none"
+           android:layout_marginTop="4dp"
+           android:layout_marginStart="16dp"
+           android:layout_marginEnd="16dp"
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintStart_toStartOf="@+id/iv_calendar"
            app:layout_constraintTop_toBottomOf="@+id/tv_vote">
 
-       </com.google.android.material.chip.ChipGroup>
+           <com.google.android.material.chip.ChipGroup
+               android:id="@+id/c_group"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginEnd="16dp"
+               android:theme="@style/Theme.MaterialComponents"
+               app:layout_constraintEnd_toEndOf="parent"
+               app:singleLine="true"
+               app:singleSelection="true">
+
+           </com.google.android.material.chip.ChipGroup>
+
+       </HorizontalScrollView>
 
        <TextView
            android:id="@+id/tv_description"
@@ -105,7 +117,7 @@
            android:lineSpacingExtra="1dp"
            app:layout_constraintEnd_toEndOf="parent"
            app:layout_constraintStart_toStartOf="parent"
-           app:layout_constraintTop_toBottomOf="@+id/c_group" />
+           app:layout_constraintTop_toBottomOf="@+id/ly_chip" />
 
        <ProgressBar
            android:id="@+id/pb_loading"
