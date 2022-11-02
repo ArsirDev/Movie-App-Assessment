@@ -12,7 +12,10 @@
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_nav_home_to_viewAllFragment"
-            app:destination="@id/nav_viewall" />
+            app:destination="@id/nav_view_all_upcoming" />
+        <action
+            android:id="@+id/action_nav_home_to_viewAllPopularFragment"
+            app:destination="@id/nav_view_all_popular" />
     </fragment>
 
     <fragment
@@ -33,12 +36,21 @@
         android:label="@string/menu_profile"
         tools:layout="@layout/fragment_profile" />
     <fragment
-        android:id="@+id/nav_viewall"
+        android:id="@+id/nav_view_all_upcoming"
         android:name="com.example.movieappassessment.presentation.home.activity.ui.viewall.fragment.upcoming.ViewAllUpcomingFragment"
-        android:label="fragment_view_all"
+        android:label="nav_view_upcoming"
         tools:layout="@layout/fragment_view_all_upcoming" >
         <action
             android:id="@+id/action_viewAllFragment_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
+    <fragment
+        android:id="@+id/nav_view_all_popular"
+        android:name="com.example.movieappassessment.presentation.home.activity.ui.viewall.fragment.pupular.ViewAllPopularFragment"
+        android:label="nav_view_all_popular"
+        tools:layout="@layout/fragment_view_all_popular" >
+        <action
+            android:id="@+id/action_viewAllPopularFragment_to_nav_home"
             app:destination="@id/nav_home" />
     </fragment>
 </navigation>

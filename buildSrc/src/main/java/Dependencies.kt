@@ -47,18 +47,6 @@ object Versions {
      */
     const val core = "1.8.0"
     /**
-     * @param type variable of [appCompat]
-     */
-    const val appCompat = "1.5.0"
-    /**
-     * @param type variable of [material]
-     */
-    const val material = "1.6.1"
-    /**
-     * @param type variable of [constraintLayout]
-     */
-    const val constraintLayout = "2.1.4"
-    /**
      * @param type variable of [extJunit]
      */
     const val extJunit = "1.1.3"
@@ -110,10 +98,6 @@ object Versions {
      * @param type variable of [lottie]
      */
     const val lottie = "5.2.0"
-    /**
-     * @param type variable of [legacy]
-     */
-    const val legacy = "1.0.0"
     /**
      * @param type variable of [splash]
      */
@@ -198,18 +182,6 @@ object AndroidLibraries {
      */
     const val core = "androidx.core:core-ktx:${Versions.core}"
     /**
-     * @param type dependecies of type [appCompat]
-     */
-    const val appCompat = "androidx.appcompat:appcompat:${Versions.appCompat}"
-    /**
-     * @param type dependecies of type [material]
-     */
-    const val material = "com.google.android.material:material:${Versions.material}"
-    /**
-     * @param type dependecies of type [constraintLayout]
-     */
-    const val constraintLayout = "androidx.constraintlayout:constraintlayout:${Versions.constraintLayout}"
-    /**
      * @param type dependecies of type [recyclerView]
      */
     const val recyclerView = "androidx.recyclerview:recyclerview:${Versions.recyclerView}"
@@ -233,10 +205,6 @@ object AndroidLibraries {
      * @param type dependecies of type [navigationUi]
      */
     const val navigationUi = "androidx.navigation:navigation-ui-ktx:${Versions.navigationUi}"
-    /**
-     * @param type dependecies of type [legacy]
-     */
-    const val legacy = "androidx.legacy:legacy-support-v4:${Versions.legacy}"
     /**
      * @param type dependecies of type [splash]
      */

@@ -1,6 +1,8 @@
 package com.example.movieappassessment.presentation.home.activity.ui.home.fragment
 
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,16 +13,19 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.findNavController
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.movieappassessment.R
 import com.example.movieappassessment.databinding.FragmentHomeBinding
 import com.example.movieappassessment.domain.adapter.popular.PopularAdapter
 import com.example.movieappassessment.domain.adapter.upcoming.UpcomingAdapter
+import com.example.movieappassessment.presentation.detail.activity.DetailActivity
 import com.example.movieappassessment.presentation.home.activity.ui.home.viewmodel.HomeViewModel
+import com.example.movieappassessment.utils.Extended.ID
+import com.example.movieappassessment.utils.MESSAGE.STATUS_ERROR
 import com.example.movieappassessment.utils.MarginItemDecorationHorizontal
 import com.example.movieappassessment.utils.removeView
 import com.example.movieappassessment.utils.showView
+import com.example.movieappassessment.utils.snackbar
 import com.example.movieappassessment.utils.underline
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -89,6 +94,14 @@ class HomeFragment : Fragment() {
                 addItemDecoration(MarginItemDecorationHorizontal(requireContext(), R.dimen.fragment_horizontal_8_margin))
                 ViewCompat.setNestedScrollingEnabled(this, true)
             }
+
+            adapter.setOnItemClickListener { id ->
+                if (id <= 0) {
+                    snackbar(binding.root, "Id Movie tidak ditemukan", STATUS_ERROR)
+                    return@setOnItemClickListener
+                }
+                startActivity(Intent(requireContext(), DetailActivity::class.java).putExtra(ID, id))
+            }
         }
         popularAdapter?.let { adapter ->
             binding.rvPopular.apply {
@@ -104,9 +117,11 @@ class HomeFragment : Fragment() {
         binding.tvUpcomingViewAll.underline()
         viewmodel.getUpcoming(1, "en-US")
         viewmodel.getPopular(1, "en-US")
-
         binding.tvUpcomingViewAll.setOnClickListener { view ->
-            view.findNavController().navigate(R.id.nav_viewall)
+            view.findNavController().navigate(R.id.nav_view_all_upcoming)
+        }
+        binding.tvPopularViewAll.setOnClickListener { view ->
+            view.findNavController().navigate(R.id.nav_view_all_popular)
         }
     }
 

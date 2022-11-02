@@ -8,6 +8,8 @@ object LocalReference {
 object MovieEndPoint {
     const val UPCOMING_MOVIE = "movie/upcoming"
     const val POPULAR_MOVIE = "movie/popular"
+    const val GENRE_MOVIE = "genre/movie/list"
+    const val DETAIL_MOVIE = "movie/{movie_id}"
 }
 
 object MovieKeyConstant {
@@ -19,4 +21,13 @@ object MovieKeyConstant {
 
 object DataBASE {
     const val NAME = "movie_database"
+}
+
+object Extended {
+    const val ID = "ID"
+}
+
+object MESSAGE {
+    const val STATUS_SUCCESS = "success"
+    const val STATUS_ERROR = "error"
 }

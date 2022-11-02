@@ -1,9 +1,11 @@
 package com.example.movieappassessment.data.repository.main
 
-import android.util.Log
 import androidx.room.withTransaction
 import com.example.movieappassessment.data.local.MovieDatabase
 import com.example.movieappassessment.data.remote.api.ApiInterface
+import com.example.movieappassessment.data.remote.dto.DetailResponse
+import com.example.movieappassessment.data.remote.dto.Genres
+import com.example.movieappassessment.data.remote.dto.PopularResponse
 import com.example.movieappassessment.data.remote.dto.UpcomingResponse
 import com.example.movieappassessment.domain.model.Popular
 import com.example.movieappassessment.domain.model.Upcoming
@@ -12,7 +14,9 @@ import com.example.movieappassessment.utils.Result
 import com.example.movieappassessment.utils.networkBindingResource
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.launchIn
 
 class MainMovieRepositoryImpl constructor(
     private val service: ApiInterface,
@@ -55,6 +59,41 @@ class MainMovieRepositoryImpl constructor(
         }
     }
 
+    override fun getAllViewPopularMovie(
+        page: Int,
+        language: String
+    ): Flow<Result<PopularResponse>> = flow {
+        emit(Result.Loading())
+
+        val result = service.getPopularMovies(page, language)
+
+        if (result.isSuccessful) {
+            result.body()?.let { response ->
+                emit(Result.Success(response))
+            }
+        } else {
+            emit(Result.Error(message = "${result.code()} ${result.message()}"))
+        }
+    }
+
+    override fun getGenre(): Flow<Result<List<Genres>>> = networkBindingResource(
+        query = {
+            database.genresDao().getAllGenres()
+        },
+        fetch = {
+            delay(2000)
+            service.getGenreMovies()
+        },
+        saveFetchResult = { popular ->
+            database.withTransaction {
+                database.genresDao().deleteAllGenres()
+                popular.body()?.toGenreList()?.let { item ->
+                    database.genresDao().insertGenres(item)
+                }
+            }
+        }
+    )
+
     override fun getPopularMovie(page: Int, language: String): Flow<Result<List<Popular>>> =
         networkBindingResource(
             query = {
@@ -73,4 +112,18 @@ class MainMovieRepositoryImpl constructor(
                 }
             }
         )
+
+    override fun getDetailMovie(movie_id: Int): Flow<Result<DetailResponse>> = flow {
+        emit(Result.Loading())
+
+        val result = service.getDetailMovies(movie_id)
+
+        if (result.isSuccessful) {
+            result.body()?.let { response ->
+                emit(Result.Success(response))
+            }
+        } else {
+            emit(Result.Error(message = "${result.code()} ${result.message()}"))
+        }
+    }
 }

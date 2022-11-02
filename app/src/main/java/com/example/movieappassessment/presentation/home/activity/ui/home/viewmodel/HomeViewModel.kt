@@ -69,7 +69,6 @@ class HomeViewModel @Inject constructor(
                             isLoading = false,
                             popular = item
                         )
-                        Log.e("TAG", "getPopular: ${result.data}")
                     }
                 }
                 is Result.Error -> {
@@ -79,5 +78,34 @@ class HomeViewModel @Inject constructor(
                 }
             }
         }.launchIn(viewModelScope + IO)
+    }
+
+    private fun getGenre() {
+        repository.getGenre().onEach { result ->
+            when(result) {
+                is Result.Loading -> {
+                    _state.value = state.value.copy(
+                        isLoading = true
+                    )
+                }
+                is Result.Success -> {
+                    result.data?.let { item ->
+                        _state.value = state.value.copy(
+                            isLoading = false,
+                            genre = item
+                        )
+                    }
+                }
+                is Result.Error -> {
+                    _state.value = state.value.copy(
+                        isLoading = false
+                    )
+                }
+            }
+        }.launchIn(viewModelScope + IO)
+    }
+
+    init {
+        getGenre()
     }
 }

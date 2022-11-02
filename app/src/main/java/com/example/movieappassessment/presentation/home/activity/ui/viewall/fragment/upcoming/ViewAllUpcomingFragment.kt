@@ -1,7 +1,6 @@
 package com.example.movieappassessment.presentation.home.activity.ui.viewall.fragment.upcoming
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,7 +13,7 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.movieappassessment.databinding.FragmentViewAllUpcomingBinding
-import com.example.movieappassessment.presentation.home.activity.ui.viewall.adapter.ViewAllAdapter
+import com.example.movieappassessment.presentation.home.activity.ui.viewall.adapter.upcoming.ViewAllUpcomingAdapter
 import com.example.movieappassessment.presentation.home.activity.ui.viewall.event.ViewAllEvent
 import com.example.movieappassessment.presentation.home.activity.ui.viewall.viewmodel.upcoming.ViewAllUpcomingViewModel
 import com.example.movieappassessment.utils.GridMarginItemDecoration
@@ -32,7 +31,7 @@ class ViewAllUpcomingFragment : Fragment() {
 
     private val binding get() = _binding!!
 
-    private var viewAllAdapter: ViewAllAdapter? = null
+    private var viewAllUpcomingAdapter: ViewAllUpcomingAdapter? = null
 
     private val viewmodel: ViewAllUpcomingViewModel by viewModels()
 
@@ -42,7 +41,7 @@ class ViewAllUpcomingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentViewAllUpcomingBinding.inflate(inflater, container, false)
-        viewAllAdapter = ViewAllAdapter.instance()
+        viewAllUpcomingAdapter = ViewAllUpcomingAdapter.instance()
         return binding.root
     }
 
@@ -77,7 +76,7 @@ class ViewAllUpcomingFragment : Fragment() {
                         }
 
                         if (result.upcoming.isNotEmpty()) {
-                            viewAllAdapter?.differ?.submitList(result.upcoming)
+                            viewAllUpcomingAdapter?.differ?.submitList(result.upcoming)
                         }
                     }
                 }
@@ -92,7 +91,7 @@ class ViewAllUpcomingFragment : Fragment() {
     }
 
     private fun initAdapter() {
-        viewAllAdapter?.let { adapter ->
+        viewAllUpcomingAdapter?.let { adapter ->
             binding.rvAll.apply {
                 this.adapter = adapter
                 layoutManager = GridLayoutManager(requireContext(), 2)
@@ -106,6 +105,6 @@ class ViewAllUpcomingFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        viewAllAdapter = null
+        viewAllUpcomingAdapter = null
     }
 }

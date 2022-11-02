@@ -13,6 +13,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.example.movieappassessment.BuildConfig.ORIGINAL_IMAGE_URL
 import com.example.movieappassessment.R
+import com.example.movieappassessment.utils.MESSAGE.STATUS_ERROR
+import com.example.movieappassessment.utils.MESSAGE.STATUS_SUCCESS
+import com.google.android.material.snackbar.Snackbar
 import com.google.gson.Gson
 import com.google.gson.JsonIOException
 import com.google.gson.JsonSyntaxException
@@ -48,7 +51,20 @@ fun String.date(): String {
     return convertDate.format(ld)
 }
 
-
+fun snackbar(view: View, message: String, type: String, duration: Int = Snackbar.LENGTH_SHORT) {
+    when(type) {
+        STATUS_SUCCESS -> {
+            Snackbar.make(view, message, duration).apply {
+                this.view.setBackgroundColor(ContextCompat.getColor(this.context, R.color.green_color))
+            }.show()
+        }
+        STATUS_ERROR -> {
+            Snackbar.make(view, message, duration).apply {
+                this.view.setBackgroundColor(ContextCompat.getColor(this.context, R.color.red_color))
+            }.show()
+        }
+    }
+}
 
 fun View.setOnClickListenerWithDebounce(debounceTime: Long = 600L, action: () -> Unit) {
     this.setOnClickListener(object : View.OnClickListener {

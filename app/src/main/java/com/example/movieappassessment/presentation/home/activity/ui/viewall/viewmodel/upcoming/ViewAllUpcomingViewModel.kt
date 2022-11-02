@@ -50,10 +50,9 @@ class ViewAllUpcomingViewModel @Inject constructor(
                     )
                 }
                 is Result.Success -> {
-                    Log.e("TAG", "getUpcoming: ${result.data}", )
                     val allow = page < 1000
-                    _state.update {
-                        it.copy(
+                    _state.update { get ->
+                        get.copy(
                             isLoading = false,
                             allowLoadNext = allow,
                             page = page,

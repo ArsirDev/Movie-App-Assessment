@@ -13,6 +13,8 @@
     <color name="light">#E3F6F5</color>
     <color name="green">#BAE8E8</color>
     <color name="blue">#755FAC</color>
+    <color name="red_color">#CC364A</color>
+    <color name="green_color">#6DC554</color>
     <color name="transpa">#99000000</color>
     <color name="text_trasparent">#80000000</color>
 </resources>
