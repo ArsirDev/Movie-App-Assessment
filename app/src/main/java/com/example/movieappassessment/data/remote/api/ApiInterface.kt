@@ -4,6 +4,7 @@ import com.example.movieappassessment.data.remote.dto.DetailResponse
 import com.example.movieappassessment.data.remote.dto.GenreResponse
 import com.example.movieappassessment.data.remote.dto.PopularResponse
 import com.example.movieappassessment.data.remote.dto.UpcomingResponse
+import com.example.movieappassessment.data.remote.dto.VideoResponse
 import com.example.movieappassessment.utils.MovieEndPoint
 import com.example.movieappassessment.utils.MovieKeyConstant
 import retrofit2.Response
@@ -32,5 +33,10 @@ interface ApiInterface {
     suspend fun getDetailMovies(
         @Path("movie_id") movie_id: Int
     ): Response<DetailResponse>
+
+    @GET(MovieEndPoint.VIDEO_MOVIE)
+    suspend fun getVideoMovies(
+        @Path("movie_id") movie_id: Int
+    ): Response<VideoResponse>
 
 }

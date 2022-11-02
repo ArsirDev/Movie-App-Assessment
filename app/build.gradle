@@ -85,6 +85,7 @@ dependencies {
     implementation Libraries.okhttp
     implementation Libraries.logging
     implementation Libraries.dotViewPager
+    implementation Libraries.youtube
 
     // Kapt
     kapt Kapt.roomCompiler

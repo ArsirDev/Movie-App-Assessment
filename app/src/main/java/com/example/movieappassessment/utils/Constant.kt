@@ -10,6 +10,7 @@ object MovieEndPoint {
     const val POPULAR_MOVIE = "movie/popular"
     const val GENRE_MOVIE = "genre/movie/list"
     const val DETAIL_MOVIE = "movie/{movie_id}"
+    const val VIDEO_MOVIE = "movie/{movie_id}/videos"
 }
 
 object MovieKeyConstant {

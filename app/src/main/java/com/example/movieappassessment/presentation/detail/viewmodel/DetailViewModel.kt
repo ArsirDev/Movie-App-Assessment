@@ -54,4 +54,35 @@ class DetailViewModel @Inject constructor(
             }
         }.launchIn(viewModelScope + IO)
     }
+
+    fun getVideoMovie(
+        movie_id: Int
+    ) {
+        repository.getVideoMovie(movie_id).onEach { result ->
+            when(result) {
+                is Result.Loading -> {
+                    _state.update {
+                        it.copy(
+                            isLoading = true
+                        )
+                    }
+                }
+                is Result.Success -> {
+                    _state.update {
+                        it.copy(
+                            isLoading = false,
+                            video = result.data?.results
+                        )
+                    }
+                }
+                is Result.Error -> {
+                    _state.update {
+                        it.copy(
+                            isLoading = false
+                        )
+                    }
+                }
+            }
+        }.launchIn(viewModelScope + IO)
+    }
 }

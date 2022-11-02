@@ -150,6 +150,10 @@ object Versions {
      * @param type variable of [dataStore]
      */
     const val dataStore = "1.0.0"
+    /**
+     * @param type variable of [youtube]
+     */
+    const val youtube = "11.1.0"
 }
 
 object KotlinLibraries {
@@ -280,6 +284,10 @@ object Libraries {
      * @param type dependecies of type [logging]
      */
     const val logging = "com.squareup.okhttp3:logging-interceptor:${Versions.okhttp}"
+    /**
+     * @param type dependecies of type [youtube]
+     */
+    const val youtube = "com.pierfrancescosoffritti.androidyoutubeplayer:core:${Versions.youtube}"
 }
 
 object Kapt {

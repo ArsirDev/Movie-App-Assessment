@@ -7,6 +7,7 @@ import com.example.movieappassessment.data.remote.dto.DetailResponse
 import com.example.movieappassessment.data.remote.dto.Genres
 import com.example.movieappassessment.data.remote.dto.PopularResponse
 import com.example.movieappassessment.data.remote.dto.UpcomingResponse
+import com.example.movieappassessment.data.remote.dto.VideoResponse
 import com.example.movieappassessment.domain.model.Popular
 import com.example.movieappassessment.domain.model.Upcoming
 import com.example.movieappassessment.domain.repository.main.MainMovieRepository
@@ -117,6 +118,20 @@ class MainMovieRepositoryImpl constructor(
         emit(Result.Loading())
 
         val result = service.getDetailMovies(movie_id)
+
+        if (result.isSuccessful) {
+            result.body()?.let { response ->
+                emit(Result.Success(response))
+            }
+        } else {
+            emit(Result.Error(message = "${result.code()} ${result.message()}"))
+        }
+    }
+
+    override fun getVideoMovie(movie_id: Int): Flow<Result<VideoResponse>> = flow {
+        emit(Result.Loading())
+
+        val result = service.getVideoMovies(movie_id)
 
         if (result.isSuccessful) {
             result.body()?.let { response ->
