@@ -16,6 +16,6 @@
     <color name="colorTextField">#15111A</color>
     <color name="red_color">#CC364A</color>
     <color name="green_color">#6DC554</color>
-    <color name="transpa">#99000000</color>
+    <color name="transpant">#99000000</color>
     <color name="text_trasparent">#80000000</color>
 </resources>

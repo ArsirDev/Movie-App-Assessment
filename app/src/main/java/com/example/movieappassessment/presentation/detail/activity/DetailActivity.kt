@@ -12,12 +12,8 @@ import com.example.movieappassessment.data.remote.dto.DetailResponse
 import com.example.movieappassessment.data.remote.dto.VideoResultsItem
 import com.example.movieappassessment.databinding.ActivityDetailBinding
 import com.example.movieappassessment.presentation.detail.viewmodel.DetailViewModel
+import com.example.movieappassessment.utils.*
 import com.example.movieappassessment.utils.Extended.ID
-import com.example.movieappassessment.utils.date
-import com.example.movieappassessment.utils.loadImage
-import com.example.movieappassessment.utils.removeView
-import com.example.movieappassessment.utils.setOnClickListenerWithDebounce
-import com.example.movieappassessment.utils.showView
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.chip.Chip
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
@@ -69,7 +65,7 @@ class DetailActivity : AppCompatActivity() {
     private fun initView(detailResponse: DetailResponse?) {
         with(binding.lyContent) {
             tvTitle?.text = detailResponse?.title
-            tvRelease?.text = detailResponse?.releaseDate?.date()
+            tvRelease?.text = detailResponse?.releaseDate?.dateConverter()
             tvVote?.text = detailResponse?.voteAverage.toString()
             tvDescription?.text = detailResponse?.overview
             detailResponse?.genres?.forEach {

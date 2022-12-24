@@ -44,7 +44,7 @@ fun View.startAnimation(animation: Animation, onFinish: () -> Unit) {
     this.startAnimation(animation)
 }
 
-fun String.date(): String {
+fun String.dateConverter(): String {
     val defaultDate: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd", Locale.ENGLISH)
     val convertDate: DateTimeFormatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.ENGLISH)
     val ld: LocalDate = LocalDate.parse(this, defaultDate)

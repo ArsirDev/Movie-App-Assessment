@@ -33,7 +33,7 @@
                 android:id="@+id/iv_saved"
                 android:layout_width="42dp"
                 android:layout_height="42dp"
-                android:background="@color/transpa"
+                android:background="@color/text_trasparent"
                 app:contentPadding="9dp"
                 android:tint="@color/white"
                 android:layout_marginEnd="18dp"
